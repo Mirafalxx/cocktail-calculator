@@ -1,17 +1,21 @@
 import React from 'react';
+import { ThemeProvider } from '@mui/material/styles';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Router } from 'react-router';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import history from './history';
+import { Provider } from 'react-redux';
+import store from './store/configureStore';
+import theme from './theme';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const app = (
+  <Provider store={store}>
+    <Router history={history}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </Router>
+  </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(app, document.getElementById('root'));
