@@ -1,8 +1,8 @@
-import { Card, CardActions, Grid,Button, CardHeader, TextField, ToggleButton } from '@mui/material';
+import { Card,  Grid,  TextField, ToggleButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import axiosRequest from '../../axiosRequest';
+// import axiosRequest from '../../axiosRequest';
 import { fetchSingleIngredientRequest } from '../../store/actions/ingredientsActions';
 
 
@@ -16,7 +16,7 @@ const useStyles=makeStyles({
     }
 })
 
-const SingleCocktail = (props) => {
+const SingleIngredient = (props) => {
     const classes=useStyles();
     const [edit,setEdit]=useState(false);
     const dispatch=useDispatch();
@@ -38,4 +38,4 @@ const SingleCocktail = (props) => {
     )
 }
 
-export default SingleCocktail
+export default SingleIngredient

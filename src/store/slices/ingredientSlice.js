@@ -7,7 +7,6 @@ const ingredientSlice = createSlice({
   initialState: {
     ingredients: [],
     singleIngredient: [],
-    createEventIngredientsLoading: false,
     ingredientsLoading: false,
     singleIngredientsLoading: false,
   },

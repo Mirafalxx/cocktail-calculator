@@ -34,7 +34,7 @@ const createIngredient= async (e)=>{
             <Grid item>
                 <FormElement required label='Ingredient' name='ingredient' value={state.ingredient} onChange={inputChangeHandler}/>
             </Grid>
-            <Grid item xs>
+            <Grid item>
                 <Button type='submit' variant='contained' color='primary'>Add Ingredient</Button>
             </Grid>
         </Grid>
