@@ -6,18 +6,30 @@ const cocktailSlice = createSlice({
   name,
   initialState: {
     cocktailList: [],
-    createCocktailsLoading: false,
+    singleCocktail: [],
+    cocktailsLoading: false,
+    singleCocktailLoading: false,
   },
   reducers: {
     fetchCocktailsRequest: (state) => {
-      state.createCocktailsLoading = true;
+      state.cocktailsLoading = true;
     },
     fetchCocktailsSuccess: (state, { payload: cocktailList }) => {
-      state.createCocktailsLoading = false;
+      state.cocktailsLoading = false;
       state.cocktailList = cocktailList;
     },
     fetchCocktailsFailure: (state) => {
-      state.createCocktailsLoading = true;
+      state.cocktailsLoading = true;
+    },
+    fetchSingleCocktailRequest: (state) => {
+      state.singleCocktailLoading = true;
+    },
+    fetchSingleCocktailSuccess: (state, { payload: singleCocktail }) => {
+      state.singleCocktailLoading = false;
+      state.singleCocktail = singleCocktail;
+    },
+    fetchSingleCocktailFailure: (state) => {
+      state.singleCocktailLoading = true;
     },
   },
 });

@@ -1,7 +1,14 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axiosRequest from '../../axiosRequest';
 
-import { fetchCocktailsFailure, fetchCocktailsRequest, fetchCocktailsSuccess } from '../actions/cocktailsActions';
+import {
+  fetchCocktailsFailure,
+  fetchCocktailsRequest,
+  fetchCocktailsSuccess,
+  fetchSingleCocktailFailure,
+  fetchSingleCocktailRequest,
+  fetchSingleCocktailSuccess,
+} from '../actions/cocktailsActions';
 
 export function* fetchCocktails() {
   const fetchedData = [];
@@ -20,7 +27,18 @@ export function* fetchCocktails() {
     yield put(fetchCocktailsFailure(e));
   }
 }
+export function* fetchSingleCocktail({ payload: cocktailId }) {
+  try {
+    const response = yield axiosRequest.get(`/cocktails/${cocktailId}.json`).then((res) => res);
+    yield put(fetchSingleCocktailSuccess(response.data));
+  } catch (e) {
+    yield put(fetchSingleCocktailFailure(e));
+  }
+}
 
-const cocktailsSagas = [takeEvery(fetchCocktailsRequest, fetchCocktails)];
+const cocktailsSagas = [
+  takeEvery(fetchCocktailsRequest, fetchCocktails),
+  takeEvery(fetchSingleCocktailRequest, fetchSingleCocktail),
+];
 
 export default cocktailsSagas;
